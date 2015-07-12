@@ -103,8 +103,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     private struct Storyboard {
         static let CellReuseIdentifier = "Tweet"
         static let mentionsSegueIdentifier = "Show Mentions"
-        static let KeywordSegueIdentifier = "From Keyword"
-
     }
     
     // MARK: - UITableViewDataSource
@@ -128,20 +126,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     // MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?,
-                                                       sender: AnyObject?) -> Bool {
-        if identifier == Storyboard.KeywordSegueIdentifier {
-            if let cell = sender as? UITableViewCell,
-                let url = cell.textLabel?.text where url.hasPrefix("http"){
-                  
-                        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
-                        return false
-                
-            }
-        }
-        return true
-    }
-
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
