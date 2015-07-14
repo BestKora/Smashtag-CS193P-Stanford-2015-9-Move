@@ -163,7 +163,7 @@
             </objects>
             <point key="canvasLocation" x="-634" y="997"/>
         </scene>
-        <!--Image Collection View Controller-->
+        <!--Images-->
         <scene sceneID="U6U-O8-mhs">
             <objects>
                 <collectionViewController id="hRq-yN-OJi" customClass="ImageCollectionViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,7 +187,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Kk-52-RCe">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="prA-2c-km0">
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="prA-2c-km0">
                                             <rect key="frame" x="50" y="50" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
@@ -220,9 +220,17 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Images" id="ap2-Qm-A8a">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="YLt-KZ-M19">
+                            <connections>
+                                <segue destination="mhY-6X-HPK" kind="unwind" unwindAction="backToRoot:" id="D1F-xb-tgQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q26-y5-ZaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mhY-6X-HPK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="80" y="-502"/>
         </scene>
@@ -468,11 +476,16 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHw-9V-zEb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Wma-LQ-A4h">
+                                <rect key="frame" x="290" y="236" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Wma-LQ-A4h" firstAttribute="centerX" secondItem="IHw-9V-zEb" secondAttribute="centerX" id="4eF-hT-GAu"/>
                             <constraint firstItem="IHw-9V-zEb" firstAttribute="bottom" secondItem="Ypx-Lu-WGC" secondAttribute="top" id="7TU-Ok-lLc"/>
                             <constraint firstAttribute="trailing" secondItem="IHw-9V-zEb" secondAttribute="trailing" id="FSA-rd-nmC"/>
+                            <constraint firstItem="Wma-LQ-A4h" firstAttribute="centerY" secondItem="IHw-9V-zEb" secondAttribute="centerY" id="GZk-FM-pwW"/>
                             <constraint firstItem="IHw-9V-zEb" firstAttribute="top" secondItem="RHY-01-RJz" secondAttribute="bottom" id="XCU-2F-wAS"/>
                             <constraint firstItem="IHw-9V-zEb" firstAttribute="leading" secondItem="UhG-rq-6cR" secondAttribute="leading" id="n21-G8-hre"/>
                         </constraints>
@@ -487,6 +500,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="IHw-9V-zEb" id="LZJ-UP-TmO"/>
+                        <outlet property="spinner" destination="Wma-LQ-A4h" id="ZkO-uN-asR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3I-H1-sRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
