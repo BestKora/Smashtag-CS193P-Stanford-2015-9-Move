@@ -35,7 +35,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate
         autoZoomed = true
         if let url = imageURL {
             spinner?.startAnimating()
-            let qos = Int(QOS_CLASS_USER_INITIATED.value)
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
                 let imageData = NSData(contentsOfURL: url) // это блокирует поток, на котором это выполняется
                 dispatch_async(dispatch_get_main_queue()) {
@@ -78,7 +78,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate
     
     // Убираем автоматическую "подгонку" после того, как пользователь выполняет zoom
     // с помощью жеста pinching
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         autoZoomed = false
     }
   

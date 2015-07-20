@@ -43,7 +43,7 @@ class MentionsTableViewController: UITableViewController {
    private var mentionTypes: [MentionType] = []
     
     
-    private struct MentionType: Printable
+    private struct MentionType: CustomStringConvertible
     {
         var type: String
         var mentions: [Mention]
@@ -51,7 +51,7 @@ class MentionsTableViewController: UITableViewController {
         var description: String { return "\(type): \(mentions)" }
     }
     
-    private enum Mention: Printable
+    private enum Mention: CustomStringConvertible
     {
         case Keyword(String)
         case Image(NSURL, Double)
@@ -92,11 +92,11 @@ class MentionsTableViewController: UITableViewController {
         switch mention {
         case .Keyword(let keyword):
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.KeywordCellReuseIdentifier,
-                                                            forIndexPath: indexPath) as! UITableViewCell
+                                                            forIndexPath: indexPath) as UITableViewCell
             cell.textLabel?.text = keyword
             return cell
             
-        case .Image(let url, let ratio):
+        case .Image(let url, _):
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.ImageCellReuseIdentifier,
                                                         forIndexPath: indexPath) as! ImageTableViewCell
             cell.imageUrl = url

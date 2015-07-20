@@ -56,7 +56,7 @@ class TweetTableViewCell: UITableViewCell
     private func setTextLabel(tweet: Tweet) -> NSMutableAttributedString {
         var tweetText:String = tweet.text
         for _ in tweet.media {tweetText += " 📷"}
-        var attribText = NSMutableAttributedString(string: tweetText)
+        let attribText = NSMutableAttributedString(string: tweetText)
         
         attribText.setKeywordsColor(tweet.hashtags, color: Palette.hashtagColor)
         attribText.setKeywordsColor(tweet.urls, color: Palette.urlColor)
@@ -77,7 +77,7 @@ class TweetTableViewCell: UITableViewCell
     
     private func setProfileImageView(tweet: Tweet) {
         if let profileImageURL = tweet.user.profileImageURL {
-            let qos = Int(QOS_CLASS_USER_INITIATED.value)
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
                 let imageData = NSData(contentsOfURL: profileImageURL)
                 dispatch_async(dispatch_get_main_queue()) {

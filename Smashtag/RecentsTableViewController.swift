@@ -38,7 +38,7 @@ class RecentsTableViewController: UITableViewController {
                       cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier,
-                                            forIndexPath: indexPath) as! UITableViewCell
+                                            forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = recents.searches[indexPath.row]
         return cell
     }

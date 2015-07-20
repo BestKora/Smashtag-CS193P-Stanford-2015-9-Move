@@ -38,7 +38,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
             let tweet = tweets.first!.first!
             title = "Tweet by " + tweet.user.name
             tableView.reloadSections(NSIndexSet(indexesInRange:
-                NSMakeRange(0, tableView.numberOfSections())),
+                NSMakeRange(0, tableView.numberOfSections)),
                 withRowAnimation: .None)
         }
     }
@@ -70,7 +70,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
                             self.tableView.reloadSections(NSIndexSet(indexesInRange:
-                                    NSMakeRange(0, self.tableView.numberOfSections())),
+                                    NSMakeRange(0, self.tableView.numberOfSections)),
                                                                   withRowAnimation: .None)
                             sender?.endRefreshing()
                             self.title = self.searchText
