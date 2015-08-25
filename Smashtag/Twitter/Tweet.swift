@@ -42,10 +42,10 @@ public class Tweet : CustomStringConvertible
                         let start = max(min(startIndex, length-1), 0)
                         let end = max(min(endIndex, length), 0)
                         if end > start {
-                            var adjustedRange = advance(inText.startIndex, start)...advance(inText.startIndex, end-1)
+                            var adjustedRange = inText.startIndex.advancedBy(start)...inText.startIndex.advancedBy(end-1)
                             var keywordInText = inText.substringWithRange(adjustedRange)
                             if prefix != nil && !keywordInText.hasPrefix(prefix!) && start > 0 {
-                                adjustedRange = advance(inText.startIndex, start-1)...advance(inText.startIndex, end-2)
+                                adjustedRange = inText.startIndex.advancedBy(start-1)...inText.startIndex.advancedBy(end-2)
                                 keywordInText = inText.substringWithRange(adjustedRange)
                             }
                             range = adjustedRange
